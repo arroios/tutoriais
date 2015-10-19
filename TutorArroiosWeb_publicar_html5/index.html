@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			background-color: #000000;
+            overflow: hidden;
+		}
+        #canvasArea {
+            margin-left: auto;
+            margin-right: auto;
+            overflow: hidden;
+        }
+
+        @font-face{ font-family : "gdjs_font_Arial.ttf"; src : url('Arial.ttf') format('truetype'); }
+	</style>
+    <!-- Libs and GDJS core files : -->
+		<script src="code.js"></script>
+
+
+</head>
+<body>
+    <div id="canvasArea"></div>
+
+    <div style="font-family: 'gdjs_font_Arial.ttf';">.</div>
+	<script>
+
+    (function() {
+        //Initialization
+        gdjs.registerObjects();
+        gdjs.registerBehaviors();
+        gdjs.registerGlobalCallbacks();
+
+        var game = new gdjs.RuntimeGame(gdjs.projectData, {});
+
+        //Create a renderer
+        var canvasArea = document.getElementById("canvasArea");
+        game.createStandardCanvas(canvasArea);
+
+        //Bind keyboards/mouse/touch events
+        game.bindStandardEvents(window, document);
+
+        //Load all assets and start the game
+        game.loadAllAssets(onAssetsLoaded);
+        function onAssetsLoaded() {
+            game.startStandardGameLoop();
+        }
+    })();
+
+	</script>
+</body>
+</html>
